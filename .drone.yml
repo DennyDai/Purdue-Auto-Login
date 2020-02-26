@@ -1,0 +1,25 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+-   name: uglifyjs
+    image: node
+    commands:
+    - npm install uglify-js -g
+    - for i in *.js; do uglifyjs -c -m -o $i $i; done
+    - tar -cvzf release.tar.gz manifest.json *.html *.js
+    when:
+        event: tag
+
+-   name: gitea_release
+    image: plugins/gitea-release
+    settings:
+        api_key:
+            from_secret: gitea_api_key
+        base_url: https://gitea.dennx.com
+        files:
+            - release.tar.gz
+
+trigger:
+  event: tag
