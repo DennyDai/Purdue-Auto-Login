@@ -1,6 +1,6 @@
 {
   "name": "Boiler AutoLogin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Bypass BoilerKey.",
   "options_page": "options.html",
   "permissions": [
@@ -9,7 +9,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.purdue.edu/apps/account/cas/login*"],
+      "matches": ["https://www.purdue.edu/apps/account/cas/login*", "https://purdue.edu/apps/account/cas/login*"],
       "js": ["HOTP.js", "casLoginInjection.js"]
     }
   ],
