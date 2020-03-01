@@ -20,7 +20,7 @@ steps:
             from_secret: gitea_api_key
         base_url: https://gitea.dennx.com
         files:
-            - release.tar.gz
+            - Boiler-AutoLogin.zip
 
 trigger:
   event: tag
