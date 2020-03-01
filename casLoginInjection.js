@@ -1,5 +1,7 @@
 window.onload=function(){
-    document.getElementById("boilerKeyLogo").innerHTML = "<button>Bypass BoilerKey, Login NOW</button>";
+    var boilerKeyLogo = document.getElementById("boilerKeyLogo");
+    boilerKeyLogo.innerHTML = "<button title=\"Bypass BoilerKey\" style=\" font-size: 120%; width: 150px; background: none #FFFFFF; border: 1px solid #999999; color: #333333; padding: .15em; cursor: pointer; font-weight: bold;\">Autofill &amp; Login</button>";
+    boilerKeyLogo.style = "margin-top: 5px !important;";
     function processForm(e) {
         e.preventDefault();
         chrome.storage.sync.get(["counter", "alias", "pin", "key"], function(result) {
@@ -16,6 +18,5 @@ window.onload=function(){
         return false;
     }
 
-    var form = document.getElementById('boilerKeyLogo');
-    form.addEventListener("click", processForm);
+    boilerKeyLogo.addEventListener("click", processForm);
 }
