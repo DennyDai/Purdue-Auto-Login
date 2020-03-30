@@ -1,25 +1,26 @@
 window.onload=function(){
     var activationCode;
+    var $ = function(name) { return document.getElementsByName(name)[0]; };
     var form = document.getElementById('settings');
     form.addEventListener("submit", processForm);
     chrome.storage.sync.get(["alias", "pin", "activationCode", "key", "counter"], function(result) {
-        if(result.alias) document.getElementsByName("alias")[0].value = result.alias;
-        if(result.pin) document.getElementsByName("pin")[0].value = result.pin;
-        if(result.activationCode) document.getElementsByName("activationCode")[0].value = activationCode = result.activationCode;
-        if(result.key) document.getElementsByName("key")[0].value = result.key;
-        if(result.counter) document.getElementsByName("counter")[0].value = result.counter;
+        if(result.alias) $("alias").value = result.alias;
+        if(result.pin) $("pin").value = result.pin;
+        if(result.activationCode) $("activationCode").value = activationCode = result.activationCode;
+        if(result.key) $("key").value = result.key;
+        if(result.counter) $("counter").value = result.counter;
     });
 
     function processForm(e) {
         e.preventDefault();
-        chrome.storage.sync.set({   "alias": document.getElementsByName("alias")[0].value, 
-                                    "pin": document.getElementsByName("pin")[0].value, 
-                                    "activationCode": document.getElementsByName("activationCode")[0].value, 
-                                    "key": document.getElementsByName("key")[0].value, 
-                                    "counter": document.getElementsByName("counter")[0].value
+        chrome.storage.sync.set({   "alias": $("alias").value, 
+                                    "pin": $("pin").value, 
+                                    "activationCode": $("activationCode").value, 
+                                    "key": $("key").value, 
+                                    "counter": $("counter").value
                                 }, function() {
-                                    if(activationCode != document.getElementsByName("activationCode")[0].value){
-                                        activateDuoMobile(document.getElementsByName("activationCode")[0].value);
+                                    if(activationCode != $("activationCode").value){
+                                        activateDuoMobile($("activationCode").value);
                                     }else{
                                         alert("SAVED!");
                                     }
