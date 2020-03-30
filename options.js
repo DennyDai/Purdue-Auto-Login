@@ -3,23 +3,23 @@ window.onload=function(){
     var form = document.getElementById('settings');
     form.addEventListener("submit", processForm);
     chrome.storage.sync.get(["alias", "pin", "activationCode", "key", "counter"], function(result) {
-        if(result.alias) document.getElementById("alias").value = result.alias;
-        if(result.pin) document.getElementById("pin").value = result.pin;
-        if(result.activationCode) document.getElementById("activationCode").value = activationCode = result.activationCode;
-        if(result.key) document.getElementById("key").value = result.key;
-        if(result.counter) document.getElementById("counter").value = result.counter;
+        if(result.alias) document.getElementsByName("alias")[0].value = result.alias;
+        if(result.pin) document.getElementsByName("pin")[0].value = result.pin;
+        if(result.activationCode) document.getElementsByName("activationCode")[0].value = activationCode = result.activationCode;
+        if(result.key) document.getElementsByName("key")[0].value = result.key;
+        if(result.counter) document.getElementsByName("counter")[0].value = result.counter;
     });
 
     function processForm(e) {
         e.preventDefault();
-        chrome.storage.sync.set({   "alias": document.getElementById("alias").value, 
-                                    "pin": document.getElementById("pin").value, 
-                                    "activationCode": document.getElementById("activationCode").value, 
-                                    "key": document.getElementById("key").value, 
-                                    "counter": document.getElementById("counter").value
+        chrome.storage.sync.set({   "alias": document.getElementsByName("alias")[0].value, 
+                                    "pin": document.getElementsByName("pin")[0].value, 
+                                    "activationCode": document.getElementsByName("activationCode")[0].value, 
+                                    "key": document.getElementsByName("key")[0].value, 
+                                    "counter": document.getElementsByName("counter")[0].value
                                 }, function() {
-                                    if(activationCode != document.getElementById("activationCode").value){
-                                        activateDuoMobile(document.getElementById("activationCode").value);
+                                    if(activationCode != document.getElementsByName("activationCode")[0].value){
+                                        activateDuoMobile(document.getElementsByName("activationCode")[0].value);
                                     }else{
                                         alert("SAVED!");
                                     }
