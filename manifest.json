@@ -1,11 +1,13 @@
 {
   "name": "Boiler AutoLogin",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Bypass BoilerKey.",
   "options_page": "options.html",
   "permissions": [
-    "https://api-1b9bef70.duosecurity.com/",
     "storage"
+  ],
+  "host_permissions": [
+    "https://api-1b9bef70.duosecurity.com/"
   ],
   "content_scripts": [
     {
@@ -13,5 +15,5 @@
       "js": ["HOTP.js", "casLoginInjection.js"]
     }
   ],
-  "manifest_version": 2
+  "manifest_version": 3
 }
