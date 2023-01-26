@@ -6,6 +6,11 @@
     "open_in_tab": true,
     "page": "options.html"
   },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6b5fdfe0-7183-47bb-b428-58b5cf718007}"
+    }
+  },
   "permissions": [
     "storage"
   ],
