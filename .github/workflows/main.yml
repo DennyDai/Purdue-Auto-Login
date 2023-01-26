@@ -1,0 +1,35 @@
+on:  
+  push:
+    tags:
+      - '*'
+
+jobs:
+  compress-and-zip:
+    runs-on: ubuntu-latest
+    name: compress-and-zip
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: compress
+        working-directory: ./src
+        run: |
+          npm install uglify-js -g
+          for i in *.js; do uglifyjs -c -m -o $i $i; done
+      - name: create manifest-common
+        run: cat manifest-template.json | jq '.version = "${{ github.ref_name }}"' > manifest-common.json
+      - name: chrome
+        run: |
+          mkdir chrome
+          cp -r src chrome
+          zip Boiler-AutoLogin-Chrome.zip chrome/*
+          cp manifest-common.json chrome/manifest.json
+      - name: firefox
+        run: |
+          mkdir firefox
+          cp -r src firefox
+          jq -c -s '.[0] * .[1]' manifest-common.json manifest-firefox.json > firefox/manifest.json          
+          zip Boiler-AutoLogin-Firefox.zip firefox/*
+      - name: Release
+        run: gh release create ${{ github.ref_name }} Boiler-AutoLogin-Chrome.zip Boiler-AutoLogin-Firefox.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
