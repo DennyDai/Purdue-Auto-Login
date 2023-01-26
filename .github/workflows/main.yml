@@ -4,9 +4,9 @@ on:
       - '*'
 
 jobs:
-  compress-and-zip:
+  build:
     runs-on: ubuntu-latest
-    name: compress-and-zip
+    name: Build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,19 +16,21 @@ jobs:
           npm install uglify-js -g
           for i in *.js; do uglifyjs -c -m -o $i $i; done
       - name: create manifest-common
-        run: cat manifest-template.json | jq '.version = "${{ github.ref_name }}"' > manifest-common.json
+        run: cat manifest-template.json | jq -c '.version = "${{ github.ref_name }}"' > manifest-common.json
       - name: chrome
         run: |
           mkdir chrome
-          cp -r src chrome
-          zip Boiler-AutoLogin-Chrome.zip chrome/*
-          cp manifest-common.json chrome/manifest.json
+          cp -r src/* chrome
+          jq -c -s '.[0] * .[1]' manifest-common.json manifest-chrome.json > chrome/manifest.json
+          cd chrome
+          zip ../Boiler-AutoLogin-Chrome.zip *
       - name: firefox
         run: |
           mkdir firefox
-          cp -r src firefox
+          cp -r src/* firefox
           jq -c -s '.[0] * .[1]' manifest-common.json manifest-firefox.json > firefox/manifest.json          
-          zip Boiler-AutoLogin-Firefox.zip firefox/*
+          cd firefox
+          zip ../Boiler-AutoLogin-Firefox.zip *
       - name: Release
         run: gh release create ${{ github.ref_name }} Boiler-AutoLogin-Chrome.zip Boiler-AutoLogin-Firefox.zip
         env:
