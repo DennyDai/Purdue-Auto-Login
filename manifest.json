@@ -1,6 +1,6 @@
 {
   "name": "Boiler AutoLogin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Bypass BoilerKey.",
   "options_ui": {
     "open_in_tab": true,
