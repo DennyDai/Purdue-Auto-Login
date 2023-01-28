@@ -1,6 +1,6 @@
 # Boiler AutoLogin
 
-[![Build Status](https://drone.dennx.com/api/badges/dennydai/Boiler-AutoLogin/status.svg)](https://drone.dennx.com/dennydai/Boiler-AutoLogin)
+[![Build Status](https://github.com/DennyDai/Boiler-AutoLogin/actions/workflows/main.yml/badge.svg)](https://github.com/DennyDai/Boiler-AutoLogin/actions/workflows/main.yml)
 
 An extension to allow you log in to Purdue CAS without using BoilerKey.
 
