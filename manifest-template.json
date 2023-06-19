@@ -1,6 +1,6 @@
 {
-  "name": "Boiler AutoLogin",
-  "description": "Bypass BoilerKey.",
+  "name": "Purdue Auto Login",
+  "description": "Bypass Purdue Login's 2-factor authentication.",
   "options_ui": {
     "open_in_tab": true,
     "page": "options.html"

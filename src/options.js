@@ -3,9 +3,9 @@ window.onload=function(){
     var $ = function(name) { return document.getElementsByName(name)[0]; };
     var form = document.getElementById('settings');
     form.addEventListener("submit", processForm);
-    chrome.storage.sync.get(["alias", "pin", "activationCode", "key", "counter"], function(result) {
-        if(result.alias) $("alias").value = result.alias;
-        if(result.pin) $("pin").value = result.pin;
+    chrome.storage.sync.get(["username", "password", "activationCode", "key", "counter"], function(result) {
+        if(result.username) $("username").value = result.username;
+        if(result.password) $("password").value = result.password;
         if(result.activationCode) $("activationCode").value = activationCode = result.activationCode;
         if(result.key) $("key").value = result.key;
         if(result.counter) $("counter").value = result.counter;
@@ -13,8 +13,8 @@ window.onload=function(){
 
     function processForm(e) {
         e.preventDefault();
-        chrome.storage.sync.set({   "alias": $("alias").value, 
-                                    "pin": $("pin").value, 
+        chrome.storage.sync.set({   "username": $("username").value, 
+                                    "password": $("password").value, 
                                     "activationCode": $("activationCode").value, 
                                     "key": $("key").value, 
                                     "counter": $("counter").value
