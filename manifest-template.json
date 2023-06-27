@@ -13,8 +13,12 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.purdue.edu/apps/account/cas/login*", "https://purdue.edu/apps/account/cas/login*"],
-      "js": ["HOTP.js", "casLoginInjection.js"]
+      "matches": ["https://sso.purdue.edu/*"],
+      "js": ["ssoPageInjection.js"]
+    },
+    {
+      "matches": ["https://api-1b9bef70.duosecurity.com/frame/v4/auth/*"],
+      "js": ["HOTP.js", "duoPageInjection.js"]
     }
   ],
   "manifest_version": 3

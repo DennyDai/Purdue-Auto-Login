@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/DennyDai/Boiler-AutoLogin/actions/workflows/main.yml/badge.svg)](https://github.com/DennyDai/Purdue-Auto-Login/actions/workflows/main.yml)
 
-An extension to allow you log in to Purdue CAS without using Duo Mobile app.
+An extension to allow you log in to Purdue SSO without using Duo Mobile app.
 
 Available on Chrome, Firefox, and Edge: 
 
