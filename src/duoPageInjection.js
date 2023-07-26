@@ -17,8 +17,8 @@ window.onload=function(){
             }
 
             setTimeout(function() {                
-            chrome.storage.sync.get(["username", "password", "counter", "key"], function(result) {
-                if(result.key && result.counter && result.username && result.password){
+            chrome.storage.sync.get(["counter", "key"], function(result) {
+                if(result.key && result.counter){
                     otp = hotp(result.key, result.counter);
                     passcodeInput.value = otp;
                     passcodeInput.dispatchEvent(new Event('input', { bubbles: true }));

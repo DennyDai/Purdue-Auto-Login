@@ -7,12 +7,14 @@ window.onload=function(){
         e.preventDefault();
         chrome.storage.local.set({"autologin": true});
         chrome.storage.sync.get(["username", "password", "counter", "key"], function(result) {
-            if(result.key && result.counter && result.username && result.password){
-                document.getElementById("username").value = result.username;
-                document.getElementById("password").value = result.password;
-                loginButton.click();
-            }else{
+            if (!result.key || !result.counter) {
                 alert("Please complete auto login setup before continuing.");
+            } else {
+                if(result.username && result.password){
+                    document.getElementById("username").value = result.username;
+                    document.getElementById("password").value = result.password;
+                }
+                loginButton.click();
             }
         });
         return false;
