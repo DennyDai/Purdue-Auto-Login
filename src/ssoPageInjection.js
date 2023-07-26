@@ -8,7 +8,7 @@ window.onload=function(){
         chrome.storage.local.set({"autologin": true});
         chrome.storage.sync.get(["username", "password", "counter", "key"], function(result) {
             if (!result.key || !result.counter) {
-                alert("Please complete auto login setup before continuing.");
+                alert("Please proceed to the settings page to complete the auto-login setup before continuing.");
             } else {
                 if(result.username && result.password){
                     document.getElementById("username").value = result.username;

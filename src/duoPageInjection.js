@@ -25,7 +25,7 @@ window.onload=function(){
                     chrome.storage.sync.set({"counter": parseInt(result.counter) + 1});
                     document.querySelector('button[type="submit"]').click();
                 }else{
-                    alert("Please complete auto login setup before continuing.");
+                    alert("Please proceed to the settings page to complete the auto-login setup before continuing.");
                 }
             });
             }, 500);
