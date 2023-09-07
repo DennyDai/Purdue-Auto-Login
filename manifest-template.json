@@ -18,7 +18,7 @@
     },
     {
       "matches": ["https://api-1b9bef70.duosecurity.com/frame/v4/auth/*"],
-      "js": ["HOTP.js", "duoPageInjection.js"]
+      "js": ["duoPageInjection.js"]
     }
   ],
   "manifest_version": 3

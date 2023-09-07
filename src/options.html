@@ -16,9 +16,13 @@
     <br>(e.g. if your Duo Activation URL is https://m-1b9bef70.duosecurity.com/activate/<strong>XXXXXXXXXXXXXXXXXX</strong>, then the code will be <strong>XXXXXXXXXXXXXXXXXX</strong>).<br>
     <input type="text" name="activationCode" placeholder="XXXXXXXXXXXXXXXXXX"><br>
     HOTP Secret:<br>
-    <input type="text" name="key" placeholder="Leave it blank" disabled><br>
+    <input type="text" name="hotp_secret" placeholder="Leave it blank" disabled><br>
     HOTP Counter:<br>
-    <input type="text" name="counter" placeholder="Leave it blank" disabled><br><br>
+    <input type="text" name="hotp_counter" placeholder="Leave it blank" disabled><br>
+    Public Key:<br>
+    <input type="text" name="pubkey" placeholder="Leave it blank" disabled><br>
+    Private Key:<br>
+    <input type="text" name="privkey" placeholder="Leave it blank" disabled><br><br>
     <input type="submit" value="submit">
     </form>
     <br><hr>
