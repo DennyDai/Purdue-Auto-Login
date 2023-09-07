@@ -23,22 +23,22 @@ jobs:
           cp -r src/* chrome
           jq -c -s '.[0] * .[1]' manifest-common.json manifest-chrome.json > chrome/manifest.json
           cd chrome
-          zip ../Boiler-AutoLogin-Chrome.zip *
+          zip ../Purdue-Auto-Login-Chrome.zip *
       - name: firefox
         run: |
           mkdir firefox
           cp -r src/* firefox
           jq -c -s '.[0] * .[1]' manifest-common.json manifest-firefox.json > firefox/manifest.json          
           cd firefox
-          zip ../Boiler-AutoLogin-Firefox.zip *
+          zip ../Purdue-Auto-Login-Firefox.zip *
       - name: edge
         run: |
           mkdir edge
           cp -r src/* edge
           jq -c -s '.[0] * .[1]' manifest-common.json manifest-edge.json > edge/manifest.json          
           cd edge
-          zip ../Boiler-AutoLogin-Edge.zip *
+          zip ../Purdue-Auto-Login-Edge.zip *
       - name: Release
-        run: gh release create ${{ github.ref_name }} Boiler-AutoLogin-Chrome.zip Boiler-AutoLogin-Firefox.zip Boiler-AutoLogin-Edge.zip
+        run: gh release create ${{ github.ref_name }} Purdue-Auto-Login-Chrome.zip Purdue-Auto-Login-Firefox.zip Purdue-Auto-Login-Edge.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
