@@ -1,4 +1,10 @@
-window.onload = () => {
+if (document.readyState === "complete") {
+    initialize();
+} else {
+    document.addEventListener("DOMContentLoaded", initialize);
+}
+
+function initialize() {
     chrome.storage.local.get(["autologin"], (result) => {
         if (!result.autologin) {
             return;
